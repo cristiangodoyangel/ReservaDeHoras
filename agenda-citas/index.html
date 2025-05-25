@@ -153,6 +153,9 @@
             opacity: 0.7;
             cursor: not-allowed;
         }
+        .fc-day-sun {
+            cursor: not-allowed !important;
+        }
 
         .fc-day-future:hover {
             background-color: var(--primary-lighter) !important;
@@ -319,7 +322,7 @@
     <nav class="navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="/images/logo.png" alt="Dr PC Gamer Logo">
+                <img src="assets/img/logo.png" alt="Dr PC Gamer Logo">
             </a>
         </div>
     </nav>
@@ -446,6 +449,7 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 locale: 'es',
+                firstDay: 1,
                 buttonText: {
                     today: 'Hoy',
                     month: 'Mes',
@@ -459,6 +463,10 @@
                     right: 'dayGridMonth'
                 },
                 dateClick: function(info) {
+                    // Bloquear domingos
+                    if (info.date.getDay() === 0) {
+                        return;
+                    }
                     var serviceType = document.getElementById('serviceType').value;
                     if (!serviceType) {
                         alertModal.show();
@@ -521,7 +529,7 @@
 
         function fetchTimeSlots(date) {
             const morningSlots = ['09:00', '10:00', '11:00', '12:00'];
-            const eveningSlots = ['17:00', '18:00', '19:00', '20:00'];
+            const eveningSlots = ['13:00', '14:00', '15:00', '16:00'];
             
             morningSlotsContainer.innerHTML = '';
             eveningSlotsContainer.innerHTML = '';
@@ -535,18 +543,12 @@
                 morningSlotsContainer.appendChild(createTimeButton(time));
             });
 
-            // Solo mostrar horarios de tarde si no es sábado
-            const dayOfWeek = new Date(date).getDay();
-            const isSaturday = dayOfWeek === 6;
-            
-            if (!isSaturday) {
-                eveningSlots.forEach(time => {
-                    eveningSlotsContainer.appendChild(createTimeButton(time));
-                });
-            } else {
-                eveningSection.style.display = 'none';
-                separator.style.display = 'none';
-            }
+            // Mostrar siempre horarios de tarde
+            eveningSlots.forEach(time => {
+                eveningSlotsContainer.appendChild(createTimeButton(time));
+            });
+            eveningSection.style.display = 'block';
+            separator.style.display = 'block';
             
             // Resetear la selección
             selectedTime = null;

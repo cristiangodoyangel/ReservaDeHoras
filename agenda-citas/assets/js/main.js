@@ -1,6 +1,6 @@
 // --- Configuración de horas disponibles ---
 const horasManana = ["09:00", "10:00", "11:00", "12:00"];
-const horasTarde = ["17:00", "18:00", "19:00", "20:00"];
+const horasTarde = ["13:00", "14:00", "15:00", "16:00"];
 let fechaSeleccionada = null;
 let horaSeleccionada = null;
 
