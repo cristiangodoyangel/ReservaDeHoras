@@ -119,8 +119,12 @@
         .fc {
             background-color: var(--white);
             border-radius: 15px;
-            padding: 20px;
+            padding: 10px;
             box-shadow: 0 0 15px rgba(21, 167, 182, 0.3);
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            overflow-x: visible;
         }
 
         .fc-theme-standard td, .fc-theme-standard th {
@@ -245,42 +249,129 @@
         #calendar {
             width: 100%;
             max-width: 100%;
-            margin: 0 auto;
+            margin: 0 auto 30px auto;
+            padding: 24px;
+            background: #fff;
+            border-radius: 12px;
+            box-sizing: border-box;
+        }
+
+        /* Espaciado entre botones y borde superior del calendario */
+        .fc-header-toolbar, .fc-toolbar {
+            padding-top: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+        .fc .fc-button-group {
+            margin-bottom: 8px;
+            gap: 8px;
+            display: inline-flex;
+        }
+        .fc .fc-button-group .fc-button:not(:last-child) {
+            margin-right: 8px;
+        }
+        .fc .fc-button {
+            margin-bottom: 4px;
+        }
+
+        /* --- Mejora visual de los días del calendario --- */
+        .fc .fc-col-header-cell {
+            background: var(--primary-color) !important;
+            color: #fff !important;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-radius: 6px 6px 0 0;
+            padding: 10px 0 !important;
+            letter-spacing: 0.5px;
+            border: none !important;
+        }
+        .fc .fc-daygrid-day {
+            background: #fff;
+            border: 1px solid #e0e0e0 !important;
+            transition: background 0.2s;
+            padding: 4px 0;
+        }
+        .fc .fc-day-today {
+            background: rgba(21, 167, 182, 0.12) !important;
+            border: 2px solid var(--primary-color) !important;
+        }
+        .fc .fc-day-past {
+            background: #f6f6f6 !important;
+            color: #b0b0b0 !important;
+            opacity: 0.7;
+        }
+        .fc .fc-day-future:hover {
+            background: rgba(21, 167, 182, 0.08) !important;
+            cursor: pointer;
+        }
+        .fc .fc-daygrid-day-number {
+            font-weight: 600;
+            color: var(--secondary-color) !important;
+            padding: 6px 0 2px 6px !important;
+            font-size: 1.08em;
+            letter-spacing: 0.2px;
+        }
+        .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+            color: var(--primary-color) !important;
+        }
+        .fc .fc-daygrid-day.fc-day-past .fc-daygrid-day-number {
+            color: #b0b0b0 !important;
+        }
+
+        /* --- Mejora visual de la vista Día (timeGridDay) --- */
+        .fc .fc-timegrid-col-header-cell {
+            background: var(--primary-color) !important;
+            color: #fff !important;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-radius: 6px 6px 0 0;
+            padding: 10px 0 !important;
+            border: none !important;
+            letter-spacing: 0.5px;
+        }
+        .fc .fc-timegrid-slot {
+            background: #fff;
+            border-color: #e0e0e0 !important;
+        }
+        .fc .fc-timegrid-slot-label {
+            background: #f6f6f6;
+            color: #888;
+            font-weight: 600;
+            border-color: #e0e0e0 !important;
+        }
+        .fc .fc-timegrid-axis {
+            background: #f6f6f6;
+            color: #888;
+            font-weight: 600;
+            border-color: #e0e0e0 !important;
+        }
+        .fc .fc-timegrid-col.fc-day-today {
+            background: rgba(21, 167, 182, 0.07) !important;
+        }
+        .fc .fc-timegrid-slot:hover {
+            background: rgba(21, 167, 182, 0.08) !important;
+            transition: background 0.2s;
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 8px;
+    /* Botones de navegación del calendario uno bajo otro */
+    .fc .fc-button-group {
+        display: flex;
+        flex-direction: column !important;
+        gap: 8px;
+        width: 100%;
+    }
+    .fc .fc-button {
+        width: 100%;
+        margin-bottom: 0 !important;
+    }
+            #calendar {
                 max-width: 100vw;
-            }
-            .main-title {
-                font-size: 1.5em !important;
-                padding: 0 5px;
-                margin-bottom: 15px;
-            }
-            .container, .container-fluid {
-                width: 100vw;
-                max-width: 100vw;
-                padding: 0 2vw;
-                margin: 0;
-            }
-            .client-form-container, .time-slots-container {
-                padding: 8px;
-                margin-bottom: 12px;
-            }
-            .logo-bar {
-                flex-direction: column !important;
-                gap: 6px;
-                padding: 0 !important;
-            }
-            .logo-img-left, .logo-img-right {
-                height: 48px !important;
-                max-width: 120px;
-                padding: 0 !important;
-            }
-            .fc {
-                padding: 2vw;
+                min-width: 0;
                 font-size: 0.95em;
+                padding: 0;
             }
             .fc-toolbar-title {
                 font-size: 1em !important;
@@ -360,6 +451,31 @@
                 padding: 6px;
             }
         }
+        @media (max-width: 500px) {
+            .logo-bar {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 0 !important;
+                padding: 0 !important;
+                width: 100% !important;
+            }
+            .logo-left, .logo-right {
+                width: 100% !important;
+                justify-content: center !important;
+                align-items: center !important;
+                display: flex !important;
+            }
+            .logo-img-left, .logo-img-right {
+                width: 100% !important;
+                max-width: 220px !important;
+                height: auto !important;
+                margin: 0 auto !important;
+                padding: 0 !important;
+                display: block !important;
+            }
+        }
 
         /* Footer */
         .footer {
@@ -384,33 +500,26 @@
         }
 
         /* Barra de logos */
-.logo-bar {
-    padding: 0.5rem 0;
-}
-.logo-left {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-.logo-right {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-.logo-img-left {
-    height: 100px !important;
-    width: auto;
-    max-width: 500px;
-    padding-left: 24px;
-}
-.logo-img-right {
-    height: 150px !important;
-    width: auto;
-    max-width: 200px;
-    padding-right: 24px;
-}
+        .logo-bar {
+            padding: 0.5rem 0;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        .logo-left, .logo-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-img-left, .logo-img-right {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 220px;
+            height: auto !important;
+            padding: 0;
+        }
 
     </style>
 </head>
@@ -432,7 +541,7 @@
             <div class="col-12">
                 <div class="form-select-container">
                     <select class="form-select" id="serviceType" required>
-                        <option value="">Seleccione un servicio</option>
+                        <option value="">Seleccione un servicio </option>
                         <option value="NOTEBOOK_HOME">Mantención Notebook Gamer (Domicilio) - $20.000</option>
                         <option value="NOTEBOOK_WORKSHOP">Mantención Notebook Gamer (Taller) - $15.000</option>
                         <option value="DESKTOP_HOME">Mantención Desktop Gamer (Domicilio) - $30.000</option>
@@ -547,9 +656,12 @@
                 selectedService = e.target.value;
             });
 
+            // Restaurar configuración original
+            var initialView = 'dayGridMonth';
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 locale: 'es',
+                selectable: true,
                 firstDay: 1,
                 buttonText: {
                     today: 'Hoy',
@@ -561,7 +673,7 @@
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'dayGridMonth'
+                    right: 'dayGridMonth,timeGridDay'
                 },
                 dateClick: function(info) {
                     // Bloquear domingos
