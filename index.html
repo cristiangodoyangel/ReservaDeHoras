@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr PC Gamer - Reservas</title>
+    <title>Reserva de Hora</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.css' rel='stylesheet'>
     <style>
@@ -115,7 +116,6 @@
             color: white;
         }
 
-        /* Estilos del calendario */
         .fc {
             background-color: var(--white);
             border-radius: 15px;
@@ -171,7 +171,7 @@
             font-weight: bold !important;
             text-transform: capitalize !important;
         }
-        /* Más separación entre botones prev y next del calendario */
+       
         .fc .fc-prev-button, .fc .fc-next-button {
             margin: 0 2px !important;
         }
@@ -256,7 +256,6 @@
             box-sizing: border-box;
         }
 
-        /* Espaciado entre botones y borde superior del calendario */
         .fc-header-toolbar, .fc-toolbar {
             padding-top: 8px;
             padding-left: 8px;
@@ -276,7 +275,6 @@
             margin-bottom: 4px;
         }
 
-        /* --- Mejora visual de los días del calendario --- */
         .fc .fc-col-header-cell {
             background: var(--primary-color) !important;
             color: #fff !important;
@@ -320,7 +318,6 @@
             color: #b0b0b0 !important;
         }
 
-        /* --- Mejora visual de la vista Día (timeGridDay) --- */
         .fc .fc-timegrid-col-header-cell {
             background: var(--primary-color) !important;
             color: #fff !important;
@@ -356,17 +353,17 @@
         }
 
         @media (max-width: 768px) {
-    /* Botones de navegación del calendario uno bajo otro */
-    .fc .fc-button-group {
+           
+        .fc .fc-button-group {
         display: flex;
         flex-direction: column !important;
         gap: 8px;
         width: 100%;
-    }
-    .fc .fc-button {
+        }
+        .fc .fc-button {
         width: 100%;
         margin-bottom: 0 !important;
-    }
+        }
             #calendar {
                 max-width: 100vw;
                 min-width: 0;
@@ -391,6 +388,15 @@
             .form-select, .form-control {
                 font-size: 1em;
                 padding: 8px 6px;
+                box-sizing: border-box;
+            }
+            @media (max-width: 700px) {
+                .form-select {
+                    width: 89vw !important;
+                    max-width: 100vw !important;
+                    min-width: 0 !important;
+                    margin-left: -8px !important; /* adjust if needed for padding */
+                }
             }
             .time-slot-btn {
                 min-width: 60px;
@@ -398,7 +404,26 @@
                 padding: 6px 0;
             }
         }
-        @media (max-width: 576px) {
+        @media (max-width: 600px) {
+            Logos aún más pequeños 
+            .logo-img-left, .logo-img-right {
+                max-width: 44px !important;
+                height: 18px !important;
+                object-fit: contain !important;
+            }
+           
+            .navbar-brand img {
+                height: 40px;
+                max-width: 70px;
+            }
+           
+            .btn, .time-slot-btn {
+                font-size: 0.75em;
+                padding: 2px 8px;
+                min-width: 22px;
+                border-radius: 0.15rem;
+            }
+        
             html, body {
                 font-size: 15px;
                 max-width: 100vw;
@@ -407,10 +432,6 @@
             .main-title {
                 font-size: 1.1em !important;
                 padding: 0 2px;
-            }
-            .logo-img-left, .logo-img-right {
-                height: 36px !important;
-                max-width: 80px;
             }
             .client-form-container, .time-slots-container {
                 padding: 4px;
@@ -435,7 +456,92 @@
                 padding: 4px 0;
             }
         }
-        @media (max-width: 400px) {
+        @media (max-width: 700px) {
+    .modal-header, .modal-title, .modal-body, .modal-footer, .client-form-container, .time-slots-container, .form-label, .form-control, .time-slots-title {
+        font-size: 0.98em !important;
+    }
+
+    .time-slot-btn {
+        font-size: 1.1em !important;
+        padding: 8px 24px !important;
+        width: auto !important;
+        min-width: 80px !important;
+        min-height: 36px !important;
+        border-radius: 1.2rem !important;
+        margin: 8px 6px !important;
+        display: inline-block !important;
+        background: #15a7b6 !important;
+        color: #fff !important;
+        border: 2px solid #15a7b6 !important;
+        box-shadow: 0 2px 10px rgba(21,167,182,0.12);
+    }
+    .time-slots-container, .modal-body {
+        text-align: center !important;
+    }
+
+    /* ...otros estilos... */
+    .fc .fc-button-group {
+        flex-direction: row !important;
+        display: flex !important;
+        gap: 8px !important;
+        width: auto !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+    }
+
+    html, body {
+        font-size: 1.1rem !important;
+    }
+    h1, h2, h3, h4, h5, h6, .main-title, .modal-title, .time-slots-title {
+        font-size: 1.3em !important;
+    }
+    .form-label, .form-control, .modal-header, .modal-body, .modal-footer, .client-form-container, .time-slots-container {
+        font-size: 1.1em !important;
+    }
+    .time-slot-btn {
+        font-size: 1.8em !important;
+        padding: 18px 0 !important;
+        min-width: 98vw !important;
+        width: 10vw !important;
+        min-height: 60px !important;
+        border-radius: 1.2rem !important;
+        margin: 12px auto !important;
+        display: block !important;
+        background: #15a7b6 !important;
+        color: #fff !important;
+        border: 2px solid #15a7b6 !important;
+        box-shadow: 0 2px 10px rgba(21,167,182,0.12);
+    }
+    .btn, .fc-button {
+        font-size: 1.15em !important;
+        min-height: 48px !important;
+        padding: 12px 20px !important;
+    }
+    .logo-img-left, .logo-img-right {
+        max-width: 90px !important;
+        height: 20px !important;
+    }
+
+    .time-slot-btn {
+        font-size: 3.5em !important;
+        padding: 18px 32px !important;
+        min-width: 70px !important;
+        min-height: 68px !important;
+        border-radius: 0.7rem !important;
+        margin: 8px 4px !important;
+    }
+
+            .logo-img-left, .logo-img-right {
+                max-width: 92px !important;
+                height: 14px !important;
+                object-fit: contain !important;
+            }
+            .fc-button, .btn, .time-slot-btn {
+                font-size: 0.55em !important;
+                padding: 1px 4px !important;
+                min-width: 14px !important;
+            }
+        
             html, body {
                 font-size: 13px;
             }
@@ -451,33 +557,7 @@
                 padding: 6px;
             }
         }
-        @media (max-width: 500px) {
-            .logo-bar {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                justify-content: center !important;
-                gap: 0 !important;
-                padding: 0 !important;
-                width: 100% !important;
-            }
-            .logo-left, .logo-right {
-                width: 100% !important;
-                justify-content: center !important;
-                align-items: center !important;
-                display: flex !important;
-            }
-            .logo-img-left, .logo-img-right {
-                width: 100% !important;
-                max-width: 220px !important;
-                height: auto !important;
-                margin: 0 auto !important;
-                padding: 0 !important;
-                display: block !important;
-            }
-        }
-
-        /* Footer */
+      
         .footer {
             text-align: center;
             padding: 20px;
@@ -516,12 +596,25 @@
             display: block;
             margin: 0 auto;
             width: 100%;
-            max-width: 220px;
+            max-width: 420px;
             height: auto !important;
             padding: 0;
         }
 
-    </style>
+    @media (max-width: 500px) {
+  .fc .fc-button-group {
+    flex-direction: column !important;
+    width: 100% !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  .fc .fc-button-group .fc-button {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+}
+</style>
 </head>
 <body>
     <nav class="navbar">
@@ -529,12 +622,10 @@
             <div class="logo-left">
                 <img src="assets/img/logo.png" alt="Logo" class="logo-img-left">
             </div>
-            <div class="logo-right">
-                <img src="assets/img/drpc.png" alt="DrPC Logo" class="logo-img-right">
-            </div>
+           
         </div>
     </nav>
-    <h1 class="main-title">Reserva de Horas - Dr PC Gamer</h1>
+    <h1 class="main-title">Reserva de Horas</h1>
 
     <div class="container mt-5">
         <div class="row">
@@ -542,21 +633,12 @@
                 <div class="form-select-container">
                     <select class="form-select" id="serviceType" required>
                         <option value="">Seleccione un servicio </option>
-                        <option value="NOTEBOOK_HOME">Mantención Notebook Gamer (Domicilio) - $20.000</option>
-                        <option value="NOTEBOOK_WORKSHOP">Mantención Notebook Gamer (Taller) - $15.000</option>
-                        <option value="DESKTOP_HOME">Mantención Desktop Gamer (Domicilio) - $30.000</option>
-                        <option value="DESKTOP_WORKSHOP">Mantención Desktop Gamer (Taller) - $25.000</option>
-                        <option value="BUILD_HOME">Armado Completo PC Gamer (Domicilio) - $35.000</option>
-                        <option value="BUILD_WORKSHOP">Armado Completo PC Gamer (Taller) - $30.000</option>
-                        <option value="FORMAT_HOME">Formateo e Instalación Windows (Domicilio) - $20.000</option>
-                        <option value="FORMAT_WORKSHOP">Formateo e Instalación Windows (Taller) - $15.000</option>
-                        <option value="BIOS_HOME">Actualización de BIOS (Domicilio) - $30.000</option>
-                        <option value="BIOS_WORKSHOP">Actualización de BIOS (Taller) - $25.000</option>
-                        <option value="DIAGNOTE_HOME">Diagnóstico de Notebook (Domicilio) - $5.000</option>
-                        <option value="DIAGNOTE_WORKSHOP">Diagnóstico de Notebook (Taller) - GRATIS</option>
-                        <option value="DIAGDESK_HOME">Diagnóstico de Desktop (Domicilio) - $7.000</option>
-                        <option value="DIAGDESK_WORKSHOP">Diagnóstico de Desktop (Taller) - GRATIS</option>
-                        <option value="COTIZACION">Cotización de piezas para Armado de PC (Vía Meet) - $10.000</option>
+                        <option value="NOTEBOOK_HOME">Servicio 1 - $20.000</option>
+                        <option value="NOTEBOOK_WORKSHOP">Servicio 2 - $15.000</option>
+                        <option value="DESKTOP_HOME">Servicio 3  - $30.000</option>
+                        <option value="DESKTOP_WORKSHOP">Servicio 4 - $25.000</option>
+                        <option value="BUILD_HOME">Servicio 5 - $35.000</option>
+                        
                     </select>
                 </div>
                 <div id="calendar"></div>
